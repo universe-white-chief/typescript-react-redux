@@ -7,7 +7,7 @@ export const AppRouter = () => (
   <Router>
     <Switch>
       <Route path="/" exact component={ GreetingPage }/>
-      <Route component={ ErrorPage }/>
+      <Route render={ () => <ErrorPage errorType={ 'NotFound' }/> }/>
     </Switch>
   </Router>
 );
