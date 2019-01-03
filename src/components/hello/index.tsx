@@ -1,7 +1,22 @@
 import * as React from 'react';
+import { Action, Dispatch } from 'redux';
+import { connect } from 'react-redux';
+import { ACTION_CLICK, ActionType, createAction } from './actions';
+import { View } from './View';
+import { RootState } from '../../reducers/index';
 
-interface Props {
-  message: string
+export { reducer } from './reducer';
+
+export interface State {
+  isClicked: boolean;
 }
 
-export const Hello = (props: Props) => <h1>Hello, {props.message}.</h1>;
+const mapStateToProps = (state: RootState) => ({
+  isClicked: state.hello.isClicked
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<Action<ActionType>>) => ({
+  onClick: () => dispatch(createAction(ACTION_CLICK))
+});
+
+export const Hello = connect(mapStateToProps, mapDispatchToProps)(View);
