@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Hello } from './components/hello';
+import { AppRouter } from './router';
 
-ReactDOM.render(<Hello message="sddtc" />, document.getElementById("root"));
-
+ReactDOM.render(<AppRouter />, document.getElementById('root'));

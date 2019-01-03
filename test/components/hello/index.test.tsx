@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { Hello } from "../../../src/components/hello/index";
+import { Hello } from '../../../src/components/hello/index';
 
 describe('<Hello/>', () => {
   it('should render Hello, test', () => {
