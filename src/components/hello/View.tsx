@@ -6,8 +6,8 @@ export interface Props {
   onClick: (this: void) => void;
 }
 
-export const View: React.SFC<Props> = ({ message, isClicked, onClick }: Props) =>
+export const View = ({ message, isClicked, onClick }: Props) =>
   <div>
-    <h1 className="hello">Hello, { message }{ isClicked ? ', again' : '' }.</h1>
+    <h1 className="title">Hello, { message }{ isClicked ? ', again' : '' }.</h1>
     <button type="button" onClick={ onClick }>Hi</button>
   </div>;

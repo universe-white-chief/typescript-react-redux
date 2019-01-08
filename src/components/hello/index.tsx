@@ -3,7 +3,7 @@ import { Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { ACTION_CLICK, ActionType, createAction } from './actions';
 import { View } from './View';
-import { RootState } from '../../reducers/index';
+import { RootState } from '../../reducers';
 
 export { reducer } from './reducer';
 

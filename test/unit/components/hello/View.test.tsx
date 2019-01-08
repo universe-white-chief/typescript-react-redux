@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { Props, View as HelloView } from '../../../src/components/hello/View';
+import { Props, View as HelloView } from '../../../../src/components/hello/View';
 
 describe('HelloView', () => {
   it('should render the greeting message', () => {
