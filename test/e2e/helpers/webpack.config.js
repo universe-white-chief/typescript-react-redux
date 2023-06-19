@@ -22,9 +22,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.tsx?$/, use: 'ts-loader' },
+      { enforce: 'pre', test: /\.js$/, use: 'source-map-loader' },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
     ]
   },
   plugins: [
@@ -33,5 +33,5 @@ module.exports = {
       inject: true,
       minify: false
     })
-  ]
+  ],
 };

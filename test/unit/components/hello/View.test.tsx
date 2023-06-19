@@ -1,36 +1,41 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
-import { Props, View as HelloView } from '../../../../src/components/hello/View';
+import {render, screen, fireEvent} from '@testing-library/react';
+import {Props, View as HelloView} from '../../../../src/components/hello/View';
 
 describe('HelloView', () => {
   it('should render the greeting message', () => {
     const props: Props = {
       message: 'test',
-      onClick: () => {},
+      onClick: () => {
+      },
       isClicked: false
     };
-    const wrapper = shallow(<HelloView { ...props } />);
-    expect(wrapper.find('h1').text()).toEqual('Hello, test.');
+    render(<HelloView {...props} />);
+    expect(screen.getByRole('heading')).toHaveTextContent('Hello, test.');
   });
 
   it('should call onClick when user clicks the button', () => {
+    const handleClick = jest.fn()
     const props: Props = {
       message: 'test',
-      onClick: jest.fn(),
+      onClick: handleClick,
       isClicked: false
     };
-    const wrapper = shallow(<HelloView { ...props }/>);
-    wrapper.find('button').simulate('click');
-    expect(props.onClick).toBeCalled();
+    render(<HelloView {...props}/>);
+
+    fireEvent.click(screen.getByText('Hi'))
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
   });
 
   it('should render again when user clicked', () => {
     const props: Props = {
       message: 'test',
-      onClick: () => {},
+      onClick: () => {
+      },
       isClicked: true
     };
-    const wrapper = shallow(<HelloView { ...props }/>);
-    expect(wrapper.find('h1').text()).toEqual('Hello, test, again.');
+    render(<HelloView {...props}/>);
+    expect(screen.getByRole('heading')).toHaveTextContent('Hello, test, again.');
   });
 });

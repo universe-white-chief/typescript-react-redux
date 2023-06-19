@@ -1,7 +1,6 @@
 'use strict';
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const path = require('path');
 const HOST = process.env.HOST || '0.0.0.0';
@@ -21,21 +20,21 @@ module.exports = {
   output: {
     publicPath: '/',
     path: DIST_PATH,
-    filename: 'assets/js/bundle.js'
+    filename: 'assets/js/bundle.js',
+    clean: true
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
+      {test: /\.tsx?$/, use: 'ts-loader'},
+      {enforce: 'pre', test: /\.js$/, use: 'source-map-loader'},
+      {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
     ]
   },
   devServer: {
     hot: true,
-    inline: true,
     historyApiFallback: true,
     host: HOST,
     port: PORT
@@ -47,7 +46,6 @@ module.exports = {
       template: `${SRC_PATH}/index.html`,
       inject: true,
       minify: false
-    }),
-    new CleanWebpackPlugin([DIST_PATH], {allowExternal: true})
+    })
   ]
 };

@@ -6,11 +6,11 @@ const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || '3333';
 
 const compiler = webpack(webpackConfig);
-const server = new WebpackDevServer(compiler, {
-  hot: false,
-  inline: true,
-  historyApiFallback: true
-});
+const server = new WebpackDevServer(
+  {
+    hot: false,
+    historyApiFallback: true
+  }, compiler);
 
 compiler.hooks.done.tap("StartDevServer", () => {
   console.log('Compiled successfully.');

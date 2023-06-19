@@ -1,14 +1,9 @@
 module.exports = {
   rootDir: '../..',
   preset: 'jest-puppeteer',
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.json'
-    }
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': ['ts-jest', {tsconfig: 'tsconfig.json'}],
   },
   testMatch: ['<rootDir>/test/e2e/**/*.test.(ts|tsx)'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],

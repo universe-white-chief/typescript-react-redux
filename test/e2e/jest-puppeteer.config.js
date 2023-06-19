@@ -1,7 +1,7 @@
 module.exports = {
   launch: {
     dumpio: true,
-    headless: process.env.HEADLESS !== 'false',
+    headless: 'new',
     executablePath: process.env.CHROME_BIN || undefined,
     args: ['--no-sandbox', '--headless', '--disable-gpu']
   },

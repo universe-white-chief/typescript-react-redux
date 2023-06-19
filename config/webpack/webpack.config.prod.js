@@ -24,9 +24,12 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
-      { test: /\.scss$/, loaders: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] },
+      {test: /\.tsx?$/, use: 'ts-loader'},
+      {enforce: 'pre', test: /\.js$/, use: 'source-map-loader'},
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
     ]
   },
   plugins: [

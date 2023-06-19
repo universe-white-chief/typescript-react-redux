@@ -1,8 +1,9 @@
-import { JSDOM } from 'jsdom';
-import { configure } from 'enzyme';
+import '@testing-library/jest-dom/extend-expect';
+import {JSDOM} from 'jsdom';
+import {configure} from 'enzyme';
 import * as EnzymeAdapter from 'enzyme-adapter-react-16';
 
-configure({ adapter: new EnzymeAdapter() });
+configure({adapter: new EnzymeAdapter()});
 
 // A dom environment is required when using enzyme/mount in node js.
 ((): void => {
